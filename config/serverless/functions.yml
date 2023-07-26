@@ -1,0 +1,14 @@
+tokens:
+  handler: src/tokens/functions/createToken.handler
+  name: app-${sls:stage}-tokens
+  events:
+    - httpApi:
+        path: /v2/tokens
+        method: post
+cards:
+  handler: src/tokens/functions/getCardInfo.handler
+  name: app-${sls:stage}-cards
+  events:
+    - httpApi:
+        path: /v2/card-info/{token}
+        method: get
