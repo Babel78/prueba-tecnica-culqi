@@ -1,0 +1,21 @@
+service: app
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  memorySize: 512
+
+package:
+  individually: true
+  exclude:
+    - node_modules/**
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+functions: ${file(config/serverless/functions.yml)}
